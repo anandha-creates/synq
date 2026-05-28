@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Tasks - SYNQ</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static',
+    filename='css/dashboard.css') }}">
+
+    <link rel="stylesheet"
+    href="{{ url_for('static',
+    filename='css/tasks.css') }}">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="logo">
+
+                <img src="{{ url_for('static',
+                filename='images/logo.png') }}">
+
+            </div>
+
+            <ul class="menu">
+
+                <li onclick="window.location.href='/admin'">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    Admin Panel
+
+                </li>
+
+                <li class="active">
+
+                    <i class="fa-regular fa-square-check"></i>
+
+                    Tasks
+
+                </li>
+
+                <li onclick="window.location.href='/profile'">
+
+                    <i class="fa-regular fa-user"></i>
+
+                    Profile
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <div class="task-page-header">
+
+            <div>
+
+                <h1>All User Tasks</h1>
+
+                <p>
+                    Monitor tasks from all users.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        {% for user in users %}
+
+        <div class="user-task-section">
+
+            <h2>{{ user.username }}</h2>
+
+            <div class="task-grid">
+
+{% if user_tasks[user.id] %}
+
+    {% for task in user_tasks[user.id] %}
+
+    <div class="task-card">
+
+        <h3>{{ task.title }}</h3>
+
+        <p>{{ task.description }}</p>
+
+        <span class="task-status">
+            {{ task.status }}
+        </span>
+
+    </div>
+
+    {% endfor %}
+
+{% else %}
+
+<p class="no-tasks">
+    No tasks available
+</p>
+
+{% endif %}
+
+</div>
+
+        </div>
+
+        {% endfor %}
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

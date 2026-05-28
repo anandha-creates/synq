@@ -1,0 +1,195 @@
+.analytics-header{
+    margin-top:20px;
+
+    margin-bottom:40px;
+}
+
+.analytics-header h1{
+    color:white;
+
+    font-size:42px;
+
+    margin-bottom:12px;
+}
+
+.analytics-header p{
+    color:#9aa4bf;
+
+    font-size:18px;
+}
+
+.analytics-layout{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(350px,1fr));
+
+    gap:28px;
+
+    margin-top:20px;
+}
+
+.score-card,
+.distribution-card,
+.smart-card,
+.priority-analysis{
+    background:#081028;
+
+    padding:32px;
+
+    border-radius:28px;
+}
+
+.score-card h2,
+.distribution-card h2,
+.smart-card h2,
+.priority-analysis h2{
+    color:white;
+
+    font-size:32px;
+
+    margin-bottom:26px;
+}
+
+.score-circle{
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    border:16px solid #13e8d1;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin:auto;
+
+    color:white;
+
+    font-size:42px;
+
+    font-weight:800;
+
+    margin-bottom:24px;
+}
+
+.score-card p{
+    color:#9aa4bf;
+
+    text-align:center;
+}
+
+.distribution-item{
+    margin-bottom:24px;
+}
+
+.distribution-item span{
+    color:white;
+
+    display:block;
+
+    margin-bottom:12px;
+}
+
+.bar{
+    width:100%;
+
+    height:14px;
+
+    background:#111c3d;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.fill{
+    height:100%;
+
+    border-radius:20px;
+}
+
+.completed-fill{
+    background:#13e8d1;
+}
+
+.progress-fill{
+    background:#ffb020;
+}
+
+.pending-fill{
+    background:#ff4d6d;
+}
+
+.insight-box{
+    background:#0d1733;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    color:#d6def1;
+
+    margin-bottom:18px;
+
+    line-height:1.6;
+}
+
+.priority-analysis p{
+    color:#d2dbef;
+
+    margin-bottom:20px;
+
+    font-size:18px;
+}
+.big-card{
+    grid-column:span 2;
+}
+
+.priority-item{
+    margin-bottom:28px;
+}
+
+.priority-item span{
+    color:white;
+
+    display:block;
+
+    margin-bottom:12px;
+
+    font-size:18px;
+}
+
+.priority-bar{
+    width:100%;
+
+    height:16px;
+
+    background:#111c3d;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.priority-fill{
+    height:100%;
+
+    border-radius:20px;
+}
+
+.high-fill{
+    background:#ff4d6d;
+}
+
+.medium-fill{
+    background:#ffb020;
+}
+
+.low-fill{
+    background:#13e8d1;
+}

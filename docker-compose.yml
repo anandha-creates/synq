@@ -1,0 +1,7 @@
+services:
+  synq:
+    build: .
+    container_name: synq-app
+    ports:
+      - "5000:5000"
+    restart: always

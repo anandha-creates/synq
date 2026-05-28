@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Analytics - SYNQ</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet"
+href="{{ url_for('static',
+filename='css/analytics.css') }}">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="logo">
+                <img src="{{ url_for('static',
+                filename='images/logo.png') }}">
+            </div>
+
+            <ul class="menu">
+
+                <li onclick="window.location.href='/dashboard'">
+
+                    <i class="fa-solid fa-table-columns"></i>
+
+                    Dashboard
+
+                </li>
+
+
+                <li onclick="window.location.href='/tasks'">
+
+                    <i class="fa-regular fa-square-check"></i>
+
+                    Tasks
+
+                </li>
+
+
+                <li onclick="window.location.href='/schedule'">
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+                    Schedule
+
+                </li>
+
+
+                <li class="active">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    Analytics
+
+                </li>
+                {% if session["role"] == "admin" %}
+
+<li onclick="window.location.href='/admin'">
+
+    <i class="fa-solid fa-shield-halved"></i>
+
+    Admin Panel
+
+</li>
+
+{% endif %}
+                <li onclick="window.location.href='/profile'">
+                    <i class="fa-regular fa-user"></i>
+                    Profile
+                </li>
+
+            </ul>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <div class="task-page-header">
+
+            <div>
+
+                <h1>Analytics Overview</h1>
+
+                <p>
+                    Track your productivity
+                    and smart insights.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ANALYTICS LAYOUT -->
+
+        <div class="analytics-layout">
+
+
+            <!-- PRODUCTIVITY SCORE -->
+
+            
+
+
+
+            <!-- TASK DISTRIBUTION -->
+
+            <div class="distribution-card">
+
+                <h2>Task Distribution</h2>
+
+
+                <div class="distribution-item">
+
+                    <span>Completed</span>
+
+                    <div class="bar">
+
+                        <div class="fill completed-fill"
+style="width: {{ completed_tasks * 20 }}%;">
+</div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="distribution-item">
+
+                    <span>In Progress</span>
+
+                    <div class="bar">
+
+                        <div class="fill progress-fill"
+                        style="width:
+                        {{ progress_tasks * 20 }}%">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="distribution-item">
+
+                    <span>Pending</span>
+
+                    <div class="bar">
+
+                        <div class="fill pending-fill"style="width:
+                        {{ pending_tasks * 20 }}%;">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SMART INSIGHTS -->
+
+            <div class="smart-card">
+
+                <h2>Smart Insights</h2>
+
+
+                <div class="insight-box">
+
+                    {{ completed_tasks }}
+                    tasks completed successfully
+
+                </div>
+
+
+                <div class="insight-box">
+
+                    {{ pending_tasks }}
+                    pending task(s) remaining
+
+                </div>
+
+
+                <div class="insight-box">
+
+                    Stay consistent to
+                    improve productivity
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PRIORITY ANALYSIS -->
+
+            <div class="priority-analysis big-card">
+
+    <h2>Priority Analysis</h2>
+
+    <div class="priority-item">
+
+        <span>🔴 High Priority</span>
+
+        <div class="priority-bar">
+
+            <div class="priority-fill high-fill"
+            style="width: {{ high_priority * 20 }}%;"></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="priority-item">
+
+        <span>🟠 Medium Priority</span>
+
+        <div class="priority-bar">
+
+            <div class="priority-fill medium-fill"
+            style="width: {{ medium_priority * 20 }}%;"></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="priority-item">
+
+        <span>🟢 Low Priority</span>
+
+        <div class="priority-bar">
+
+            <div class="priority-fill low-fill"
+            style="width: {{ low_priority * 20 }}%;"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synq Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}">
+            </div>
+
+            <ul class="menu">
+
+                <li class="active">
+                    <i class="fa-solid fa-table-columns"></i>
+                    Dashboard
+                </li>
+
+                <li onclick="window.location.href='/tasks'">
+    <i class="fa-regular fa-square-check"></i>
+    Tasks
+</li>
+
+                <li onclick="window.location.href='/schedule'">
+    <i class="fa-regular fa-calendar-days"></i>
+    Schedule
+</li>
+
+                <li onclick="window.location.href='/analytics'">
+    <i class="fa-solid fa-chart-line"></i>
+    Analytics
+</li>
+{% if session["role"] == "admin" %}
+
+<li onclick="window.location.href='/admin'">
+
+    <i class="fa-solid fa-shield-halved"></i>
+
+    Admin Panel
+
+</li>
+
+{% endif %}
+
+                <li onclick="window.location.href='/profile'">
+                    <i class="fa-regular fa-user"></i>
+                    Profile
+                </li>
+
+            </ul>
+
+        </div>
+
+        
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+
+        <div class="topbar">
+
+            <div>
+                <h1>
+                    Welcome back,
+                    <span>{{ username }}</span> 
+                </h1>
+
+                <p>Here's what's happening with your tasks today.</p>
+            </div>
+
+            <div class="top-actions">
+             
+                
+
+                <div class="notification" onclick="toggleNotifications()">
+
+    <i class="fa-regular fa-bell"></i>
+
+    <div class="notification-dropdown" id="notificationBox">
+
+        <h4>Notifications</h4>
+
+        <div class="notify-item">
+            ✅ {{ completed_tasks }} task(s) completed
+        </div>
+
+        <div class="notify-item">
+            🔄 {{ progress_tasks }} task(s) in progress
+        </div>
+
+        <div class="notify-item">
+            ⏰ {{ pending_tasks }} pending task(s)
+        </div>
+
+    </div>
+
+</div>
+
+                <div class="profile-circle"
+onclick="window.location.href='/profile'">
+
+    {{ username[0] }}
+
+</div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="stats-grid">
+
+            <!-- PROGRESS -->
+
+            <div class="progress-card">
+
+    <h2>Tasks Completed</h2>
+
+    <div class="progress-wrapper">
+
+        <div class="progress-circle">
+            <div class="circle" style="--progress: {{ completion_percentage }}">
+    <h1>{{ completion_percentage }}%</h1>
+</div>
+        </div>
+
+        
+
+    </div>
+
+</div>
+
+
+            <!-- SMALL CARDS -->
+
+            <div class="mini-card">
+    <div class="mini-top">
+        <i class="fa-regular fa-clipboard"></i>
+        <span>Total Tasks</span>
+    </div>
+
+    <h2>{{ total_tasks }}</h2>
+
+    <p>All tasks</p>
+</div>
+
+
+<div class="mini-card">
+    <div class="mini-top">
+        <i class="fa-regular fa-circle-check"></i>
+        <span>Completed</span>
+    </div>
+
+    <h2>{{ completed_tasks }}</h2>
+
+    <p>Completed tasks</p>
+</div>
+
+
+<div class="mini-card">
+    <div class="mini-top">
+        <i class="fa-regular fa-clock"></i>
+        <span>In Progress</span>
+    </div>
+
+    <h2>{{ progress_tasks }}</h2>
+
+    <p>Tasks in progress</p>
+</div>
+
+
+<div class="mini-card">
+    <div class="mini-top">
+        <i class="fa-solid fa-circle"></i>
+        <span>Pending</span>
+    </div>
+
+    <h2>{{ pending_tasks }}</h2>
+
+    <p>Pending tasks</p>
+</div>
+        </div>
+
+
+
+        <!-- TASK HEADER -->
+
+        <div class="task-header">
+
+            <h2>Task Board</h2>
+
+            <div class="task-actions">
+
+                
+
+                
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TASK BOARD -->
+
+        <div class="task-board">
+
+            <!-- TODO -->
+
+            <div class="column">
+
+                <div class="column-title">
+                    <span class="dot yellow"></span>
+                    To Do
+                </div>
+
+                
+
+                {% for task in todo_tasks %}
+
+<div class="task-card">
+
+    <h4>{{ task.title }}</h4>
+
+    <p>{{ task.description }}</p>
+
+    <div class="tag {{ task.priority.lower() }}">
+        {{ task.priority }}
+    </div>
+
+    
+
+</div>
+
+{% endfor %}
+
+            </div>
+
+
+            <!-- IN PROGRESS -->
+
+            <div class="column">
+
+                <div class="column-title">
+                    <span class="dot blue"></span>
+                    In Progress
+                </div>
+
+                {% for task in inprogress_tasks %}
+
+<div class="task-card">
+
+    <h4>{{ task.title }}</h4>
+
+    <p>{{ task.description }}</p>
+
+    <div class="tag {{ task.priority.lower() }}">
+        {{ task.priority }}
+    </div>
+
+    
+
+</div>
+
+{% endfor %}
+
+                
+
+            </div>
+
+
+            <!-- COMPLETED -->
+
+            <div class="column">
+
+                <div class="column-title">
+                    <span class="dot green"></span>
+                    Completed
+                </div>
+
+                {% for task in completed_task_list %}
+<div class="task-card">
+
+    <h4>{{ task.title }}</h4>
+
+    <p>{{ task.description }}</p>
+
+    <div class="tag {{ task.priority.lower() }}">
+        {{ task.priority }}
+    </div>
+
+    
+
+</div>
+
+{% endfor %}
+
+                
+
+            </div>
+
+        </div>
+    
+
+    </main>
+
+</div>
+<script>
+
+function toggleNotifications(){
+
+    document
+    .getElementById("notificationBox")
+    .classList
+    .toggle("active");
+
+}
+
+</script>
+
+</body>
+</html>

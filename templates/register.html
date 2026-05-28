@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Synq Register</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/register.css') }}">
+
+</head>
+
+<body>
+
+    <!-- Glow -->
+
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
+    <!-- Container -->
+
+    <div class="register-container">
+
+        <!-- Logo -->
+
+        <div class="logo-wrapper">
+
+            <img src="{{ url_for('static', filename='images/logo.png') }}"
+                 alt="Synq Logo">
+
+        </div>
+
+        <!-- Register Card -->
+
+        <div class="register-card">
+
+            <h1>
+                Create Account
+            </h1>
+
+            <p>
+                Start organizing tasks and collaborating with your team.
+            </p>
+
+            <!-- Form -->
+
+            <form method="POST">
+
+                <!-- Username -->
+
+                <div class="input-group">
+
+                    <label>
+                        Username
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <input type="text" name="username" placeholder="Enter username" required>
+
+                    </div>
+
+                </div>
+
+                <!-- Email -->
+
+                <div class="input-group">
+
+                    <label>
+                        Email Address
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                </div>
+
+                <!-- Password -->
+
+                <div class="input-group">
+
+                    <label>
+                        Password
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input type="password" name="password" placeholder="Create password" required>
+
+                    </div>
+
+                </div>
+
+                <!-- Confirm Password -->
+
+                <div class="input-group">
+
+                    <label>
+                        Confirm Password
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-shield"></i>
+
+                        <input type="password" name="confirm_password" placeholder="Confirm password" required>
+
+                    </div>
+
+                </div>
+
+                <!-- Button -->
+
+                <button class="register-btn">
+
+                    Create Account
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </form>
+
+            <!-- Bottom Text -->
+
+            <div class="bottom-text">
+
+                Already have an account?
+
+                <a href="/login">
+                    Login
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

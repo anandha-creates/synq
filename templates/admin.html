@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Panel - SYNQ</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static',
+    filename='css/dashboard.css') }}">
+
+    <link rel="stylesheet"
+    href="{{ url_for('static',
+    filename='css/admin.css') }}">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="logo">
+
+                <img src="{{ url_for('static',
+                filename='images/logo.png') }}">
+
+            </div>
+
+            <ul class="menu">
+
+                <li class="active">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    Admin Panel
+
+                </li>
+
+                <li onclick="window.location.href='/tasks'">
+
+                    <i class="fa-regular fa-square-check"></i>
+
+                    Tasks
+
+                </li>
+
+                
+
+                
+                <li onclick="window.location.href='/profile'">
+                    <i class="fa-regular fa-user"></i>
+                    Profile
+                </li>
+
+            </ul>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <div class="task-page-header">
+
+            <div>
+
+                <h1>Admin Dashboard</h1>
+
+                <p>
+                    Manage users and monitor platform activity.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- STATS -->
+
+        <div class="admin-stats">
+
+            <div class="admin-card">
+
+                <h2>{{ total_users }}</h2>
+
+                <span>Total Users</span>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2>{{ total_tasks }}</h2>
+
+                <span>Total Tasks</span>
+
+            </div>
+
+        </div>
+        <div class="middle-grid">
+
+            <div class="platform-insights">
+
+    <h2>Platform Insights</h2>
+
+    <div class="insight-card">
+        ✅ {{ total_users }} users registered
+    </div>
+
+    <div class="insight-card">
+        📋 {{ total_tasks }} total tasks created
+    </div>
+
+    <div class="insight-card">
+        🔥 Platform running smoothly
+    </div>
+
+</div>
+<!-- RECENT USERS -->
+
+    <div class="recent-users">
+
+        <h2>Recent Users</h2>
+
+        {% for user in recent_users %}
+
+        <div class="recent-user-card">
+
+            <h3>{{ user.username }}</h3>
+
+            <p>{{ user.email }}</p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+    <!-- USERS TABLE -->
+
+    <div class="users-section">
+
+        <h2>Registered Users</h2>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+
+            {% for user in users %}
+
+            <tr>
+
+                <td>{{ user.id }}</td>
+
+                <td>{{ user.username }}</td>
+
+                <td>{{ user.email }}</td>
+
+                <td>
+
+                    <span class="role-badge {{ user.role }}">
+                        {{ user.role }}
+                    </span>
+
+                </td>
+
+                <td>
+
+                    {% if user.role != "admin" %}
+
+                    <a href="/delete_user/{{ user.id }}"
+onclick="return confirm('Delete this user?')">
+
+    <button class="delete-user-btn">
+
+        Delete
+
+    </button>
+
+</a>
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+
+
+    <!-- RECENT USERS -->
+
+    
+
+</div>
+
+
+        <!-- USERS TABLE -->
+
+        
+    </main>
+
+</div>
+
+</body>
+</html>

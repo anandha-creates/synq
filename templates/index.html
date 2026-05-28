@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Synq</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- Glow Effects -->
+
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
+    <!-- Navbar -->
+
+    <nav class="navbar">
+
+    <div class="logo-wrapper">
+
+        <img src="{{ url_for('static', filename='images/logo.png') }}"
+             alt="Synq Logo">
+
+    </div>
+
+    <a href="/login" class="login-btn">
+    Login
+</a>
+
+</nav>
+
+    <!-- Hero Section -->
+
+    <section class="hero">
+
+        <div class="hero-left">
+
+            <h1>
+
+                Organize
+                <span>Tasks.</span>
+
+                <br>
+
+                Drive Results Faster.
+                <span>Together.</span>
+
+            </h1>
+
+            <p>
+
+                Synq helps teams manage projects, track progress,
+                collaborate efficiently, and stay focused —
+                all from one powerful workspace.
+
+            </p>
+
+            <a href="/register" class="cta-btn">
+
+    Get Started
+
+    <i class="fa-solid fa-arrow-right"></i>
+
+</a>
+
+        </div>
+
+    </section>
+    <!-- Features Section -->
+
+<section class="features-section">
+
+    <div class="section-title">
+
+    <h2>
+        What SYNQ Offers
+    </h2>
+
+    <p>
+        Designed to help teams stay organized,
+        collaborate efficiently, and execute faster.
+    </p>
+
+</div>
+
+    <!-- Feature Cards -->
+
+    <div class="features-grid">
+
+        <!-- Card 1 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                <i class="fa-solid fa-list-check"></i>
+            </div>
+
+            <h3>
+                Smart Task Boards
+            </h3>
+
+            <p>
+                Organize projects using intuitive task boards
+                with seamless workflow management.
+            </p>
+
+        </div>
+
+        <!-- Card 2 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <h3>
+                Team Collaboration
+            </h3>
+
+            <p>
+                Collaborate with teammates in real-time
+                and stay aligned across projects.
+            </p>
+
+        </div>
+
+        <!-- Card 3 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+
+            <h3>
+                Progress Tracking
+            </h3>
+
+            <p>
+                Monitor productivity, deadlines,
+                and team performance efficiently.
+            </p>
+
+        </div>
+
+        <!-- Card 4 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+
+            <h3>
+                Smart Notifications
+            </h3>
+
+            <p>
+                Get instant updates, reminders,
+                and deadline alerts without distractions.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CTA Section -->
+
+<section class="cta-section">
+
+    <h2>
+    Start Managing Smarter
+    <br>
+    With <span>SYNQ</span>
+</h2>
+
+    <p>
+        Build better workflows, improve collaboration,
+        and keep your entire team in sync.
+    </p>
+<div class="feature-pills">
+
+    <div class="pill">
+        <i class="fa-solid fa-bolt"></i>
+        Smart Workflows
+    </div>
+
+    <div class="pill">
+        <i class="fa-solid fa-users"></i>
+        Team Sync
+    </div>
+
+    <div class="pill">
+        <i class="fa-solid fa-chart-line"></i>
+        Real-time Tracking
+    </div>
+
+    <div class="pill">
+        <i class="fa-solid fa-layer-group"></i>
+        Task Automation
+    </div>
+
+</div>
+    
+
+</section>
+
+</body>
+
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Profile - SYNQ</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static',
+    filename='css/dashboard.css') }}">
+
+    <link rel="stylesheet"
+    href="{{ url_for('static',
+    filename='css/profile.css') }}">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="logo">
+
+                <img src="{{ url_for('static',
+                filename='images/logo.png') }}">
+
+            </div>
+
+
+            <ul class="menu">
+
+{% if session["role"] == "admin" %}
+
+    <li onclick="window.location.href='/admin'">
+        <i class="fa-solid fa-shield-halved"></i>
+        Admin Panel 
+    </li>
+
+    <li onclick="window.location.href='/tasks'">
+    <i class="fa-regular fa-square-check"></i>
+    Tasks
+</li>
+
+    <li class="active">
+        <i class="fa-regular fa-user"></i>
+        Profile
+    </li>
+
+{% else %}
+
+    <li onclick="window.location.href='/dashboard'">
+        <i class="fa-solid fa-table-columns"></i>
+        Dashboard
+    </li>
+
+    <li onclick="window.location.href='/tasks'">
+    <i class="fa-regular fa-square-check"></i>
+    Tasks
+</li>
+
+    <li onclick="window.location.href='/schedule'">
+        <i class="fa-solid fa-calendar-days"></i>
+        Schedule
+    </li>
+
+    <li onclick="window.location.href='/analytics'">
+        <i class="fa-solid fa-chart-line"></i>
+        Analytics
+    </li>
+
+    <li class="active">
+        <i class="fa-regular fa-user"></i>
+        Profile
+    </li>
+
+{% endif %}
+
+</ul>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        
+
+
+
+        <!-- PROFILE CARD -->
+
+        <div class="profile-card">
+
+            <!-- AVATAR -->
+
+            <div class="profile-avatar">
+
+                {{ username[0].upper() }}
+
+            </div>
+
+
+
+            <!-- USER INFO -->
+
+            <h2>{{ username }}</h2>
+
+            <p class="email-text">
+
+                {{ email }}
+
+            </p>
+
+
+
+            <div class="account-info">
+
+                <div class="info-row">
+
+                    <span>Account Status</span>
+
+                    <strong>Active</strong>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span>Member Since</span>
+
+                    <strong>May 2026</strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ACTION BUTTONS -->
+
+            <div class="profile-actions">
+
+                <button class="profile-btn">
+
+                    <i class="fa-regular fa-pen-to-square"></i>
+
+                    Edit Profile
+
+                </button>
+
+
+                <button class="profile-btn">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    Change Password
+
+                </button>
+
+
+                <button class="profile-btn">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    Notification Settings
+
+                </button>
+
+
+                <a href="/logout">
+
+                    <button class="logout-btn">
+
+                        <i class="fa-solid fa-right-from-bracket"></i>
+
+                        Logout
+
+                    </button>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- ABOUT SECTION -->
+
+            <div class="about-box">
+
+                <h3>About SYNQ Account</h3>
+
+                <p>
+                    You are currently using the
+                    SYNQ productivity platform
+                    to manage tasks, schedules
+                    and workflow organization.
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

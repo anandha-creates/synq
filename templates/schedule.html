@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Schedule - SYNQ</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static',
+    filename='css/dashboard.css') }}">
+
+    <link rel="stylesheet"
+    href="{{ url_for('static',
+    filename='css/schedule.css') }}">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="logo">
+                <img src="{{ url_for('static',
+                filename='images/logo.png') }}">
+            </div>
+
+            <ul class="menu">
+
+                <li onclick="window.location.href='/dashboard'">
+                    <i class="fa-solid fa-table-columns"></i>
+                    Dashboard
+                </li>
+
+                <li onclick="window.location.href='/tasks'">
+                    <i class="fa-regular fa-square-check"></i>
+                    Tasks
+                </li>
+
+                <li class="active-menu">
+                    <i class="fa-regular fa-calendar-days"></i>
+                    Schedule
+                </li>
+
+                <li onclick="window.location.href='/analytics'">
+    <i class="fa-solid fa-chart-line"></i>
+    Analytics
+</li>
+{% if session["role"] == "admin" %}
+
+<li onclick="window.location.href='/admin'">
+
+    <i class="fa-solid fa-shield-halved"></i>
+
+    Admin Panel
+
+</li>
+
+{% endif %}
+
+                <li onclick="window.location.href='/profile'">
+                    <i class="fa-regular fa-user"></i>
+                    Profile
+                </li>
+
+            </ul>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <div class="schedule-header">
+
+            <div>
+        <h1>Schedule Overview</h1>
+
+        <p>
+            Track deadlines and upcoming tasks.
+        </p>
+    </div>
+
+        </div>
+
+
+        <!-- TODAY -->
+
+        <div class="schedule-section">
+
+            <h2>Today</h2>
+
+            <div class="schedule-grid">
+
+                {% for task in today_tasks %}
+
+                <div class="schedule-card today-card">
+
+                    <h3>{{ task.title }}</h3>
+
+                    <p>{{ task.description }}</p>
+
+                    <span>
+                        Due Today
+                    </span>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- UPCOMING -->
+
+        <div class="schedule-section">
+
+            <h2>Upcoming</h2>
+
+            <div class="schedule-grid">
+
+                {% for task in upcoming_tasks %}
+
+                <div class="schedule-card upcoming-card">
+
+                    <h3>{{ task.title }}</h3>
+
+                    <p>{{ task.description }}</p>
+
+                    <span>
+                        {{ task.due_date }}
+                    </span>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- OVERDUE -->
+
+        <div class="schedule-section">
+
+            <h2>Overdue</h2>
+
+            <div class="schedule-grid">
+
+                {% for task in overdue_tasks %}
+
+                <div class="schedule-card overdue-card">
+
+                    <h3>{{ task.title }}</h3>
+
+                    <p>{{ task.description }}</p>
+
+                    <span>
+                        {{ task.due_date }}
+                    </span>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+
+</html>
